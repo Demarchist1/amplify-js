@@ -26,6 +26,7 @@ export { default as ConfirmSignUp } from './ConfirmSignUp';
 export { default as VerifyContact } from './VerifyContact';
 export { default as ForgotPassword } from './ForgotPassword';
 export { default as Greetings } from './Greetings';
+export { default as PhoneField } from './PhoneField';
 export {
 	default as FederatedSignIn,
 	FederatedButtons,
