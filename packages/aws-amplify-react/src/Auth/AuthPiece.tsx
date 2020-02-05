@@ -86,11 +86,11 @@ export default class AuthPiece<
 		const { usernameAttributes = 'username' } = this.props;
 		switch (usernameAttributes) {
 			case UsernameAttributes.EMAIL:
-				return this.inputs.email;
+				return this.inputs.email.toLowerCase();
 			case UsernameAttributes.PHONE_NUMBER:
 				return this.phone_number;
 			default:
-				return this.inputs.username || this.state.username;
+				return (this.inputs.username || this.state.username).toLowerCase();
 		}
 	}
 
@@ -163,7 +163,7 @@ export default class AuthPiece<
 			username = authData; // username string
 		}
 
-		return username;
+		return username.toLowerCase();
 	}
 
 	errorMessage(err) {
