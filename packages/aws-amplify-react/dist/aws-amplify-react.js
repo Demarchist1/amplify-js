@@ -5552,13 +5552,13 @@ function (_super) {
 
     switch (usernameAttributes) {
       case types_1.UsernameAttributes.EMAIL:
-        return this.inputs.email;
+        return this.inputs.email ? this.inputs.email.toLowerCase() : '';
 
       case types_1.UsernameAttributes.PHONE_NUMBER:
         return this.phone_number;
 
       default:
-        return this.inputs.username || this.state.username;
+        return this.inputs.username ? this.inputs.username.toLowerCase() : this.state.username.toLowerCase();
     }
   };
 
@@ -5631,7 +5631,7 @@ function (_super) {
       username = authData; // username string
     }
 
-    return username;
+    return username.toLowerCase();
   };
 
   AuthPiece.prototype.errorMessage = function (err) {
@@ -5676,7 +5676,7 @@ function (_super) {
         type = _a.type,
         checked = _a.checked;
     var check_type = ['radio', 'checkbox'].includes(type);
-    this.inputs[name] = check_type ? checked : value;
+    this.inputs[name] = check_type ? checked : value.toLowerCase();
     this.inputs['checkedValue'] = check_type ? value : null;
   };
 

@@ -86,11 +86,13 @@ export default class AuthPiece<
 		const { usernameAttributes = 'username' } = this.props;
 		switch (usernameAttributes) {
 			case UsernameAttributes.EMAIL:
-				return this.inputs.email;
+				return this.inputs.email ? this.inputs.email.toLowerCase() : '';
 			case UsernameAttributes.PHONE_NUMBER:
 				return this.phone_number;
 			default:
-				return this.inputs.username || this.state.username;
+				return this.inputs.username
+					? this.inputs.username.toLowerCase()
+					: this.state.username.toLowerCase();
 		}
 	}
 
@@ -163,7 +165,7 @@ export default class AuthPiece<
 			username = authData; // username string
 		}
 
-		return username;
+		return username.toLowerCase();
 	}
 
 	errorMessage(err) {
@@ -202,7 +204,7 @@ export default class AuthPiece<
 		this.inputs = this.inputs || {};
 		const { name, value, type, checked } = evt.target;
 		const check_type = ['radio', 'checkbox'].includes(type);
-		this.inputs[name] = check_type ? checked : value;
+		this.inputs[name] = check_type ? checked : value.toLowerCase();
 		this.inputs['checkedValue'] = check_type ? value : null;
 	}
 

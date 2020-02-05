@@ -22,7 +22,7 @@ interface IPhoneFieldProps {
 interface IPhoneFieldState {}
 
 class PhoneField extends React.Component<IPhoneFieldProps, IPhoneFieldState> {
-	private inputs: any;
+	public inputs: any;
 
 	constructor(props) {
 		super(props);
