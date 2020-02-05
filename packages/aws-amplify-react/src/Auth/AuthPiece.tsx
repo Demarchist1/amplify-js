@@ -202,7 +202,7 @@ export default class AuthPiece<
 		this.inputs = this.inputs || {};
 		const { name, value, type, checked } = evt.target;
 		const check_type = ['radio', 'checkbox'].includes(type);
-		this.inputs[name] = check_type ? checked : value;
+		this.inputs[name] = check_type ? checked : value.toLowerCase();
 		this.inputs['checkedValue'] = check_type ? value : null;
 	}
 
