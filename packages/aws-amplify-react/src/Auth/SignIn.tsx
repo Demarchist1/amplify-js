@@ -83,6 +83,7 @@ export default class SignIn extends AuthPiece<ISignInProps, ISignInState> {
 
 		const username = this.getUsernameFromInput() || '';
 		const password = this.inputs.password;
+		console.log('getUsernameFromInput', username);
 
 		if (!Auth || typeof Auth.signIn !== 'function') {
 			throw new Error(

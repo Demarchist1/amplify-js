@@ -264,6 +264,8 @@ export default class SignUp extends AuthPiece<ISignUpProps, IAuthPieceState> {
 				`Couldn't find the label: ${this.getUsernameLabel()}, in sign up fields according to usernameAttributes!`
 			);
 		}
+		console.log('signup_info.username', signup_info.username);
+		signup_info.username = signup_info.username.toLowerCase();
 		Auth.signUp(signup_info)
 			.then(data => {
 				this.setState({ requestPending: false });
