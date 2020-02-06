@@ -9518,6 +9518,7 @@ function (_super) {
 
             username = this.getUsernameFromInput() || '';
             password = this.inputs.password;
+            console.log('getUsernameFromInput', username);
 
             if (!auth_1["default"] || typeof auth_1["default"].signIn !== 'function') {
               throw new Error('No Auth module found, please ensure @aws-amplify/auth is imported');
@@ -10176,6 +10177,8 @@ function (_super) {
       throw new Error("Couldn't find the label: " + this.getUsernameLabel() + ", in sign up fields according to usernameAttributes!");
     }
 
+    console.log('signup_info.username', signup_info.username);
+    signup_info.username = signup_info.username.toLowerCase();
     auth_1["default"].signUp(signup_info).then(function (data) {
       _this.setState({
         requestPending: false
