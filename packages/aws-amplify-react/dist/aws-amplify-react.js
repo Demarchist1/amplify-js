@@ -7377,7 +7377,21 @@ function (_super) {
   }
 
   PhoneField.prototype.composePhoneNumber = function (dial_code, phone_line_number) {
+    phone_line_number = this.trimStart(phone_line_number, '0');
     return "" + (dial_code || '+1') + phone_line_number.replace(/[-()]/g, '');
+  };
+
+  PhoneField.prototype.trimStart = function (str, ch) {
+    var start = 0,
+        end = str.length;
+
+    while (start < end && str[start] === ch) {
+      ++start;
+    } // while(end > start && str[end - 1] === ch)
+    //     --end;
+
+
+    return start > 0 || end < str.length ? str.substring(start, end) : str;
   };
 
   PhoneField.prototype.handleInputChange = function (evt) {
