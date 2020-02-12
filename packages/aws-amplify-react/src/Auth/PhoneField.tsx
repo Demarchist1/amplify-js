@@ -29,10 +29,19 @@ class PhoneField extends React.Component<IPhoneFieldProps, IPhoneFieldState> {
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.composePhoneNumber = this.composePhoneNumber.bind(this);
 
-		this.inputs = {
-			dial_code: this.props.defaultDialCode || '+1',
-			phone_line_number: '',
-		};
+		if (props.value) {
+			var code = countryDialCodes.find(c => props.value.startsWith(c));
+			var number = props.value.substring(code.length);
+			this.inputs = {
+				dial_code: code,
+				phone_line_number: number,
+			};
+		} else {
+			this.inputs = {
+				dial_code: this.props.defaultDialCode || '+1',
+				phone_line_number: '',
+			};
+		}
 	}
 
 	composePhoneNumber(dial_code, phone_line_number) {
