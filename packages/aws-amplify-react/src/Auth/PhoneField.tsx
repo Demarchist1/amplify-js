@@ -111,10 +111,11 @@ class PhoneField extends React.Component<IPhoneFieldProps, IPhoneFieldState> {
 					<Input
 						placeholder={I18n.get(placeholder)}
 						theme={theme}
-						type="tel"
+						type="number"
 						id="phone_line_number"
 						key="phone_line_number"
 						name="phone_line_number"
+						value={this.inputs.phone_line_number}
 						onChange={this.handleInputChange}
 						data-test={auth.genericAttrs.phoneNumberInput}
 					/>
