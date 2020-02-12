@@ -4586,7 +4586,7 @@ function (_super) {
       console.log("PhoneField code=" + code + ", number=" + number);
       _this.inputs = {
         dial_code: code,
-        phone_line_number: number
+        phone_line_number: _this.trimStart(number, '0')
       };
     } else {
       _this.inputs = {
@@ -4661,7 +4661,7 @@ function (_super) {
     })), React.createElement(Amplify_UI_Components_React_1.Input, {
       placeholder: core_1.I18n.get(placeholder),
       theme: theme,
-      type: "number",
+      type: "text",
       id: "phone_line_number",
       key: "phone_line_number",
       name: "phone_line_number",

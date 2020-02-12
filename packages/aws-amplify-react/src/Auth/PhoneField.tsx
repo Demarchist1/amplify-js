@@ -38,7 +38,7 @@ class PhoneField extends React.Component<IPhoneFieldProps, IPhoneFieldState> {
 
 			this.inputs = {
 				dial_code: code,
-				phone_line_number: number,
+				phone_line_number: this.trimStart(number, '0'),
 			};
 		} else {
 			this.inputs = {
@@ -111,7 +111,7 @@ class PhoneField extends React.Component<IPhoneFieldProps, IPhoneFieldState> {
 					<Input
 						placeholder={I18n.get(placeholder)}
 						theme={theme}
-						type="number"
+						type="text"
 						id="phone_line_number"
 						key="phone_line_number"
 						name="phone_line_number"
