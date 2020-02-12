@@ -29,9 +29,13 @@ class PhoneField extends React.Component<IPhoneFieldProps, IPhoneFieldState> {
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.composePhoneNumber = this.composePhoneNumber.bind(this);
 
+		console.log('PhoneField.props.value', props.value);
+
 		if (props.value) {
 			var code = countryDialCodes.find(c => props.value.startsWith(c));
 			var number = props.value.substring(code.length);
+			console.log(`PhoneField code=${code}, number=${number}`);
+
 			this.inputs = {
 				dial_code: code,
 				phone_line_number: number,
