@@ -7369,10 +7369,25 @@ function (_super) {
 
     _this.handleInputChange = _this.handleInputChange.bind(_this);
     _this.composePhoneNumber = _this.composePhoneNumber.bind(_this);
-    _this.inputs = {
-      dial_code: _this.props.defaultDialCode || '+1',
-      phone_line_number: ''
-    };
+    console.log('PhoneField.props.value', props.value);
+
+    if (props.value) {
+      var code = country_dial_codes_1["default"].find(function (c) {
+        return props.value.startsWith(c);
+      });
+      var number = props.value.substring(code.length);
+      console.log("PhoneField code=" + code + ", number=" + number);
+      _this.inputs = {
+        dial_code: code,
+        phone_line_number: number
+      };
+    } else {
+      _this.inputs = {
+        dial_code: _this.props.defaultDialCode || '+1',
+        phone_line_number: ''
+      };
+    }
+
     return _this;
   }
 
